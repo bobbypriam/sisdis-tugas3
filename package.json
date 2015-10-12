@@ -1,0 +1,10 @@
+{
+  "name": "hello-soap",
+  "description": "HelloService SOAP Server",
+  "version": "0.1.0",
+  "dependencies": {
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "soap": "^0.9.4"
+  }
+}

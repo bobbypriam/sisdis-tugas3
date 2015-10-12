@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Hello SOAP client</title>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<form id="form">
+  URL WSDL <input id="wsdl" /><br>
+  String dikirim <input id="message" /><br>
+  <input type="submit" value="Kirim" />
+</form>
+<div id="output"></div>
+<script>
+$('#form').submit(function () {
+  var url = $('#wsdl').val();
+  var message = $('#message').val();
+
+  $.ajax({
+    url: '/tugas3/post',
+    data: {
+      url: url,
+      message: message
+    },
+    success: function (data) {
+      $('#output').text(data.helloOutputPart);
+    },
+    error: function () {
+      console.log('error');
+    }
+  });
+
+  return false;
+});
+</script>
