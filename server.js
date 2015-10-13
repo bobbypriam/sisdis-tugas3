@@ -32,7 +32,7 @@ app.get('/tugas3/post', function (req, res) {
   if (url && message) {
     soap.createClient(url, function (err, client) {
       client.Hello([message], function (err, result) {
-        res.json(result.body);
+        res.send(result.body);
       });
     });
   }
