@@ -31,8 +31,8 @@ app.get('/tugas3/post', function (req, res) {
   var message = req.query.message;
   if (url && message) {
     soap.createClient(url, function (err, client) {
-      client.Hello([message], function (err, result) {
-        res.send(result.body);
+      client.Hello(message, function (err, result) {
+        res.send(result);
       });
     });
   }
