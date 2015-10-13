@@ -1,7 +1,7 @@
 var soap = require('soap');
 
-soap.createClient('http://localhost:8888/tugas3/wsdl', function (err, client) {
-  client.helloService.helloPort.Hello({ helloInputPart: 'tes'}, function (err, result) {
+soap.createClient('http://10.10.100.38/tugas3/wsdl', function (err, client) {
+  client.Hello(['tes'], function (err, result) {
     console.log(result);
   });
 });
