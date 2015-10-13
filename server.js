@@ -9,10 +9,8 @@ var xml = fs.readFileSync('spec.wsdl', 'utf8');
 var service = {
   helloService: {
     helloPort: {
-      Hello: function (args) {
-        return {
-          helloOutputPart: "Halo " + args.helloInputPart
-        };
+      Hello: function (message) {
+        return "Halo " + message;
       }
     }
   }
@@ -33,8 +31,8 @@ app.get('/tugas3/post', function (req, res) {
   var message = req.query.message;
   if (url && message) {
     soap.createClient(url, function (err, client) {
-      client.Hello({ helloInputPart: message }, function (err, result) {
-        res.json(result);
+      client.Hello(message, function (err, result) {
+        res.json(result.body);
       });
     });
   }

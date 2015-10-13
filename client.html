@@ -20,7 +20,7 @@ $('#form').submit(function () {
       message: message
     },
     success: function (data) {
-      $('#output').text(data.helloOutputPart);
+      $('#output').text(data);
     },
     error: function () {
       console.log('error');
