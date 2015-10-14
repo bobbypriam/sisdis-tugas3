@@ -26,10 +26,12 @@ app.get('/tugas3/wsdl', function (req, res) {
   res.send(xml);
 });
 
+// Handle creating SOAP client
 app.get('/tugas3/post', function (req, res) {
   var url = req.query.url;
   var message = req.query.message;
   if (url && message) {
+    // Create SOAP client with WSDL from URL and call Hello(message)
     soap.createClient(url, function (err, client) {
       client.Hello(message, function (err, result) {
         res.send(result);
@@ -38,11 +40,12 @@ app.get('/tugas3/post', function (req, res) {
   }
 });
 
-app.get('/tugas3/client', function (req, res) {
+// Show client page
+app.get('/tugas3/klien', function (req, res) {
   var html = fs.readFileSync('client.html', 'utf8');
   res.send(html);
 });
 
 var server = http.createServer(app);
 server.listen(8888);
-var soapServer = soap.listen(server, '/tugas3/server', service, xml);
+soap.listen(server, '/tugas3/server', service, xml);
